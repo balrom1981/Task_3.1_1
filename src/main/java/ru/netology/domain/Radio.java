@@ -7,6 +7,8 @@ public class Radio {
     int minVolume = 0;
 
 
+    /* Возможность выставлять номера радиостанций с помощью пульта */
+
     public int setCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
             currentStation = minStation;
@@ -18,15 +20,7 @@ public class Radio {
         return currentStation;
     }
 
-    public int getCurrentVolume(int currentVolume) {
-        if (currentVolume > maxVolume) {
-            currentVolume = maxVolume;
-        }
-        if (currentVolume < minVolume) {
-            currentVolume = minVolume;
-        }
-        return currentVolume;
-    }
+    /* Возможность переключать каналы вверх по стрелкам на пульте */
 
     public int setPlusOneStation(int[] station, int numberStation) {
         int currentStation;
@@ -35,9 +29,10 @@ public class Radio {
         } else {
             currentStation = minStation;
         }
-
         return currentStation;
     }
+
+    /* Возможность переключать каналы вниз по стрелкам на пульте */
 
     public int setMinusOneStation(int[] station, int numberStation) {
         int currentStation;
@@ -48,7 +43,29 @@ public class Radio {
         }
 
         return currentStation;
+    }
 
+    /* Возможность увеличивать громкость вверх по стрелкам на пульте */
 
+    public int setPlusOneVolume(int[] volume, int numberVolum) {
+        int currentVolume;
+        if (numberVolum < volume.length - 1) {
+            currentVolume = volume[numberVolum+1];
+        } else {
+            currentVolume = maxVolume;
+        }
+        return currentVolume;
+    }
+
+    /* Возможность уменьшать громкость вверх по стрелкам на пульте */
+
+    public int setMinusOneVolume(int[] volume, int numberVolum) {
+        int currentVolume;
+        if (numberVolum > 0) {
+            currentVolume = volume[numberVolum-1];
+        } else {
+            currentVolume = minVolume;
+        }
+        return currentVolume;
     }
 }
