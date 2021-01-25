@@ -1,71 +1,114 @@
 package ru.netology.domain;
 
 public class Radio {
-    int maxStation = 9;
-    int minStation = 0;
-    int maxVolume = 10;
-    int minVolume = 0;
+    private int maxStation;
+    private int minStation;
+    private int maxVolume;
+    private int minVolume;
+    private int currentVolume;
+    private int currentStation;
 
 
-    /* Возможность выставлять номера радиостанций с помощью пульта */
+    public void setMaxStation(int maxStation) {
+        this.maxStation = maxStation;
+    }
 
-    public int setCurrentStation(int currentStation) {
-        if (currentStation > maxStation) {
-            currentStation = minStation;
+
+    public void setMinStation(int minStation) {
+        this.minStation = minStation;
+    }
+
+
+    public void setMaxVolume(int maxVolume) {
+        this.maxVolume = maxVolume;
+    }
+
+
+    public void setMinVolume(int minVolume) {
+        this.minVolume = minVolume;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
+            return;
         }
-        if (currentStation < minStation) {
-            currentStation = maxStation;
+        if (currentVolume > maxVolume) {
+            return;
         }
+        this.currentVolume = currentVolume;
+    }
 
+    public int getCurrentStation() {
         return currentStation;
+    }
+
+
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < minStation) {
+            return;
+        }
+        if (currentStation > maxStation) {
+            return;
+        }
+        this.currentStation = currentStation;
     }
 
     /* Возможность переключать каналы вверх по стрелкам на пульте */
-
-    public int setPlusOneStation(int[] station, int numberStation) {
-        int currentStation;
-        if (numberStation < station.length - 1) {
-            currentStation = station[numberStation+1];
-        } else {
-            currentStation = minStation;
-        }
+    public int getNextStation() {
         return currentStation;
+    }
+
+    public void setNextStation(int currentStation) {
+        if (currentStation < maxStation) {
+            currentStation++;
+        }
+        else return;
+        this.currentStation = currentStation;
     }
 
     /* Возможность переключать каналы вниз по стрелкам на пульте */
-
-    public int setMinusOneStation(int[] station, int numberStation) {
-        int currentStation;
-        if (numberStation > 0) {
-            currentStation = station[numberStation-1];
-        } else {
-            currentStation = maxStation;
-        }
-
+    public int getPreviousStation() {
         return currentStation;
     }
 
-    /* Возможность увеличивать громкость вверх по стрелкам на пульте */
 
-    public int setPlusOneVolume(int[] volume, int numberVolum) {
-        int currentVolume;
-        if (numberVolum < volume.length - 1) {
-            currentVolume = volume[numberVolum+1];
-        } else {
-            currentVolume = maxVolume;
+    public void setPreviousStation(int currentStation) {
+        if (currentStation > minStation) {
+            currentStation--;
         }
+        else currentStation=maxStation;
+        this.currentStation = currentStation;
+    }
+
+    /* Возможность переключать громкость вверх по стрелкам на пульте */
+    public int getNextVolume() {
         return currentVolume;
     }
 
-    /* Возможность уменьшать громкость вверх по стрелкам на пульте */
-
-    public int setMinusOneVolume(int[] volume, int numberVolum) {
-        int currentVolume;
-        if (numberVolum > 0) {
-            currentVolume = volume[numberVolum-1];
-        } else {
-            currentVolume = minVolume;
+    public void setNextVolume(int currentVolume) {
+        if (currentVolume < maxVolume) {
+            currentVolume++;
         }
+        else currentVolume=maxVolume;
+        this.currentVolume = currentVolume;
+    }
+
+    /* Возможность переключать громкость вниз по стрелкам на пульте */
+    public int getPreviousVolume() {
         return currentVolume;
+    }
+
+    public void setPreviousVolume(int currentVolume) {
+        if (currentVolume > minVolume) {
+            currentVolume--;
+        }
+        else return;
+        this.currentVolume = currentVolume;
+
     }
 }
+
