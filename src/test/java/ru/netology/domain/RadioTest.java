@@ -91,7 +91,7 @@ class RadioTest {
         radio.setMaxStation(9);
         radio.setCurrentStation(9);
         radio.NextStation();
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
@@ -129,9 +129,9 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMinStation(0);
         radio.setMaxStation(9);
-        radio.setCurrentStation(-1);
+        radio.setCurrentStation(0);
         radio.PreviousStation();
-        assertEquals(0, radio.getCurrentStation());
+        assertEquals(9, radio.getCurrentStation());
     }
 
     @Test
@@ -149,7 +149,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setMinVolume(0);
         radio.setMaxVolume(10);
-        radio.setCurrentVolume(-1);
+        radio.setCurrentVolume(0);
         radio.PreviousVolume();
         assertEquals(0, radio.getCurrentVolume());
     }
