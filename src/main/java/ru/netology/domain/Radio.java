@@ -1,50 +1,30 @@
 package ru.netology.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
+
 public class Radio {
-    private int maxStation;
-    private int minStation;
-    private int maxVolume;
-    private int minVolume;
-    private int currentVolume;
+    private int maxStation = 10;
+    private int minStation = 0;
+    private int maxVolume = 100;
+    private int minVolume = 0;
     private int currentStation;
+    private int currentVolume;
 
-    public int getMaxStation() {
-        return maxStation;
-    }
+    public Radio(int currentStation, int currentVolume) {
+        if (currentStation < minStation) {
+            return;
+        }
+        if (currentStation > maxStation) {
+            return;
+        }
+        this.currentStation = currentStation;
 
-    public void setMaxStation(int maxStation) {
-        this.maxStation = maxStation;
-    }
-
-    public int getMinStation() {
-        return minStation;
-    }
-
-    public void setMinStation(int minStation) {
-        this.minStation = minStation;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
         if (currentVolume < minVolume) {
             return;
         }
@@ -55,45 +35,35 @@ public class Radio {
 
     }
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public void setCurrentStation(int currentStation) {
-        if (currentStation < minStation) {
-            return;
-        }
-        if (currentStation > maxStation) {
-            return;
-        }
-        this.currentStation = currentStation;
-    }
-
-    public void NextStation() {
+    public void nextStation() {
         if (currentStation < maxStation) {
             currentStation++;
+        } else {
+            currentStation = minStation;
         }
-        else currentStation = minStation;
     }
 
-    public void NextVolume() {
+    public void nextVolume() {
         if (currentVolume < maxVolume) {
             currentVolume++;
+        } else {
+            currentVolume = maxVolume;
         }
-        else currentVolume = maxVolume;
-
     }
 
-    public void PreviousStation() {
+    public void previousStation() {
         if (currentStation > minStation) {
             currentStation--;
+        } else {
+            currentStation = maxStation;
         }
-        else currentStation = maxStation;
     }
 
-    public void PreviousVolume() {
+    public void previousVolume() {
         if (currentVolume > minVolume) {
             currentVolume--;
+        } else {
+            currentVolume = minVolume;
         }
     }
 }
