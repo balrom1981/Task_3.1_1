@@ -44,8 +44,8 @@ class RadioTest {
     @Test
     public void nextStationAndNextVolume() {
         Radio radio = new Radio(6, 5);
-        radio.NextStation();
-        radio.NextVolume();
+        radio.nextStation();
+        radio.nextVolume();
         assertEquals(7, radio.getCurrentStation());
         assertEquals(6, radio.getCurrentVolume());
     }
@@ -53,8 +53,8 @@ class RadioTest {
     @Test
     public void nextStationAndNextVolumeMax() {
         Radio radio = new Radio(10, 100);
-        radio.NextStation();
-        radio.NextVolume();
+        radio.nextStation();
+        radio.nextVolume();
         assertEquals(0, radio.getCurrentStation());
         assertEquals(100, radio.getCurrentVolume());
     }
@@ -62,8 +62,8 @@ class RadioTest {
     @Test
     public void previousStationAndPreviousVolume() {
         Radio radio = new Radio(5, 50);
-        radio.PreviousStation();
-        radio.PreviousVolume();
+        radio.previousStation();
+        radio.previousVolume();
         assertEquals(4, radio.getCurrentStation());
         assertEquals(49, radio.getCurrentVolume());
     }
@@ -71,8 +71,8 @@ class RadioTest {
     @Test
     public void previousStationAndPreviousVolumeMin() {
         Radio radio = new Radio(0, 0);
-        radio.PreviousStation();
-        radio.PreviousVolume();
+        radio.previousStation();
+        radio.previousVolume();
         assertEquals(10, radio.getCurrentStation());
         assertEquals(0, radio.getCurrentVolume());
     }
